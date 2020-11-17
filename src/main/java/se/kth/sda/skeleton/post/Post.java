@@ -24,6 +24,15 @@ public class Post {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "poster")
+    private String poster;
+
     public Long getId() {
         return id;
     }
@@ -62,5 +71,29 @@ public class Post {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 }

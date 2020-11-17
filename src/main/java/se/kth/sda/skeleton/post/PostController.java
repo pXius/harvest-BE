@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import se.kth.sda.skeleton.auth.AuthService;
 
 import java.util.List;
 
@@ -12,10 +13,12 @@ import java.util.List;
 public class PostController {
 
     private final PostService service;
+    private final AuthService authService;
 
     @Autowired
-    public PostController(PostService service) {
+    public PostController(PostService service, AuthService authService) {
         this.service = service;
+        this.authService = authService;
     }
 
     @GetMapping("")
@@ -28,8 +31,9 @@ public class PostController {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("")
+    @PostMapping("/new")
     public Post create(@RequestBody Post newPost) {
+        newPost.setEmail(authService.getLoggedInUserEmail());
         return service.create(newPost);
     }
 
