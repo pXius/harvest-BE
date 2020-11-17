@@ -12,13 +12,13 @@ public class Post {
     @SequenceGenerator(name = "post_generator", sequenceName = "post_seq")
     private Long id;
 
-    @Column(name = "post_title")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "post_body")
+    @Column(name = "body")
     private String body;
 
-    @Column(name = "post_claimed")
+    @Column(name = "claimed")
     private boolean claimed;
 
     @Column(name = "image_url")
