@@ -1,5 +1,6 @@
 package se.kth.sda.skeleton.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

@@ -15,7 +15,7 @@ public class Post {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "body")
+    @Column(name = "body", columnDefinition = "TEXT")
     private String body;
 
     @Column(name = "claimed")
@@ -96,4 +96,6 @@ public class Post {
     public void setPoster(String poster) {
         this.poster = poster;
     }
+
+
 }
