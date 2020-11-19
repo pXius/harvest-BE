@@ -1,6 +1,9 @@
 package se.kth.sda.skeleton.post;
 
 import javax.persistence.*;
+import se.kth.sda.skeleton.comments.*;
+
+import java.util.List;
 
 @Table(name = "posts")
 @Entity
@@ -32,6 +35,9 @@ public class Post {
 
     @Column(name = "poster")
     private String poster;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<Comment> comments;
 
     public Long getId() {
         return id;
