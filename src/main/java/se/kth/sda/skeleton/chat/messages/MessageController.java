@@ -47,7 +47,7 @@ public class MessageController {
     }
 
     @PostMapping("/{id}")
-    public Message createMessage(@RequestParam(required = true) String receiverEmail, Message newMessage) {
+    public Message createMessage(@RequestBody Message newMessage, @RequestParam String receiverEmail) {
         String senderEmail = authService.getLoggedInUserEmail();
         newMessage.setReceiverEmail(receiverEmail);
         newMessage.setSenderEmail(senderEmail);

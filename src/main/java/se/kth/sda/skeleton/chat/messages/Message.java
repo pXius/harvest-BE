@@ -1,5 +1,6 @@
 package se.kth.sda.skeleton.chat.messages;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import se.kth.sda.skeleton.chat.threads.MessageThread;
 
 import javax.persistence.*;
@@ -13,7 +14,6 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "message_generator")
     @SequenceGenerator(name = "message_generator", sequenceName = "message_seq")
     private Long id;
-
 
     @Column(name = "sender_email")
     private String senderEmail;
@@ -38,6 +38,18 @@ public class Message {
         this.id = id;
     }
 
+    public Message(Long id, String senderEmail, String receiverEmail, MessageThread thread, String messageBody, String date) {
+        this.id = id;
+        this.senderEmail = senderEmail;
+        this.receiverEmail = receiverEmail;
+        this.thread = thread;
+        this.messageBody = messageBody;
+        this.date = date;
+    }
+
+    public Message() {
+    }
+
     public String getMessageBody() {
         return messageBody;
     }
@@ -54,6 +66,7 @@ public class Message {
         this.date = date;
     }
 
+    @JsonBackReference
     public MessageThread getThread() {
         return thread;
     }

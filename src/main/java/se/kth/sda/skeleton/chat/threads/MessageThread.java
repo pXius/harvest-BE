@@ -1,5 +1,6 @@
 package se.kth.sda.skeleton.chat.threads;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import se.kth.sda.skeleton.chat.messages.Message;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class MessageThread {
     @SequenceGenerator(name = "thread_generator", sequenceName = "thread_seq")
     private Long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "thread")
     private List<Message> thread;
 
     @Column(name = "p1_email")
@@ -32,6 +33,7 @@ public class MessageThread {
         this.id = id;
     }
 
+    @JsonManagedReference
     public List<Message> getThread() {
         return thread;
     }
