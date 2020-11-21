@@ -24,6 +24,7 @@ public class MessageThreadService {
         return repository.findById(id);
     }
 
+    // Refer to comment in MessageThreadRepository
     public MessageThread findByEmails(String p1Mail, String p2Mail) {
         return repository.findByP1EmailAndP2Email(p1Mail, p2Mail);
     }

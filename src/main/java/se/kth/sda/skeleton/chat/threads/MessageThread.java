@@ -6,6 +6,9 @@ import se.kth.sda.skeleton.chat.messages.Message;
 import javax.persistence.*;
 import java.util.List;
 
+/* To get around the issue of a thread being deleted, and both parties losing the messages,
+   we could explore creating a thread for each user with references to the same messages  */
+
 @Entity
 @Table(name = "message_thread")
 public class MessageThread {

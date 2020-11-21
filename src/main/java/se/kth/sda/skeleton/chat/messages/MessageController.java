@@ -36,6 +36,7 @@ public class MessageController {
         return threadService.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    // Refer to comment in MessageThreadRepository
     @PostMapping("")
     public MessageThread createThread(MessageThread newThread, @RequestParam(required = true) String receiverEmail) {
         String senderEmail = authService.getLoggedInUserEmail();
